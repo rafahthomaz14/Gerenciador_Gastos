@@ -1,0 +1,137 @@
+.card {
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 10px;
+    height: 100vh;
+    max-height: 430px;
+    font-size: 15px;
+}
+
+.card h1 {
+    margin-bottom: 35px;
+}
+
+.lista {
+    margin-top: 30px;
+    margin-left: 3%;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #004c4c;
+    max-height: 400px;
+    overflow-y:auto ;
+}
+
+.linha {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #3a7878b3;
+}
+
+.linha article {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.botoes {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.botoes button{
+    background-color: transparent;
+    border: 0;
+    color: white;
+    font-size: 15px;
+}
+
+.btn-sair {
+    font-size: 23px;
+    border-radius: 5px;
+    padding: 1px;
+    width: 100px;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    margin-left: 85%;
+    margin-bottom: 13px;
+}
+
+.btn-sair:hover {
+    background-color: #0a9292;
+    transition: 0.6s;
+}
+
+.sair {
+    margin-top: 10px;
+}
+
+.total-container {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;  
+    margin-top: 10px;
+    margin-left: -7%; 
+}
+
+.total {
+    padding: 10px 20px;
+}
+
+
+label{
+    font-size:20px;
+    margin-bottom: 5px;
+}
+input{
+    padding: 5px;
+    margin-bottom: 20px;
+}
+textarea{
+    font-size: 15px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+select{
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.btn-salvar{
+    border: 0;
+    padding: 10px;
+    background-color: #64c3c3;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+@media (max-width:767px) {
+    .lista {
+        margin-left:0px;
+    }
+    .linha{
+        font-size: 15px;
+    }
+    .btn-sair {
+        margin-top: -50px;
+        margin-left: 70%;
+        margin-bottom: 30px;
+    }
+    .total h1{
+        font-size: 22px;
+    }
+
+    .total-container {
+        display: flex;
+        justify-content: flex-end; 
+        align-items: flex-end;  
+        margin-top: 2%;
+        margin-left: -10%; 
+    }
+}
