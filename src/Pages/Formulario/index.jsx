@@ -14,6 +14,9 @@ import {
     updateDoc,
 } from "firebase/firestore"
 
+import { ToastContainer, toast } from 'react-toastify';
+
+
 export default function Formulario() {
 
     const [descricao, setDescricao] = useState('')
@@ -58,7 +61,7 @@ export default function Formulario() {
         e.preventDefault();
 
         if (descricao === '' || moeda === '' || valor === '') {
-            alert('Selecione todos os campos!')
+            toast.warning('Preencha todos os campos!')
             return
         }
 
@@ -74,13 +77,13 @@ export default function Formulario() {
             userUid: user?.uid
         })
             .then(() => {
-                alert('Cadastrado com sucesso');
+                toast.success('Cadastrado com sucesso!');
                 setValor('')
                 setMoeda('')
                 setDescricao('')
             })
             .catch((error) => {
-                alert('Erro', error)
+                toast.error('Erro !', error)
             });
     }
 
@@ -91,7 +94,7 @@ export default function Formulario() {
     async function DeletarItem(id) {
         const docRef = doc(db, 'gastos', id)
         await deleteDoc(docRef)
-        alert('Item deletado')
+        toast.success('Removido com sucesso!')
     }
 
     function EditarItem(item) {
@@ -103,11 +106,19 @@ export default function Formulario() {
     }
 
     function handleDescricaoChange(e) {
-        const inputDescricao = e.target.value;
+        const inputDescricao = e.target.value
         if (inputDescricao.length <= 20) {
             setDescricao(inputDescricao)
         }
     }
+
+    const handleChange = (e) => {
+        const inputValue = e.target.value;
+        if (/^\d{0,7}$/.test(inputValue)) {
+            setValor(inputValue);
+        }
+    }
+
 
     async function AtualizarDescr() {
         const docRef = doc(db, 'gastos', editDescricao?.id)
@@ -116,34 +127,35 @@ export default function Formulario() {
             valor: valor,
             moeda: moeda,
         })
-        .then(()=>{
-            alert('Atualizado com sucesso!')
-            setDescricao('')
-            setValor('')
-            setMoeda('')
-            setEditDescricao({})
-        })
-        .catch(()=>{
-            alert('Erro ao atualizar!')
-            setDescricao('')
-            setValor('')
-            setMoeda('')
-            setEditDescricao({})
-        })
+            .then(() => {
+                toast.success('Atualizado com sucesso!')
+                setDescricao('')
+                setValor('')
+                setMoeda('')
+                setEditDescricao({})
+            })
+            .catch(() => {
+                toast.error('Erro ao atualizar!')
+                setDescricao('')
+                setValor('')
+                setMoeda('')
+                setEditDescricao({})
+            })
 
     }
-    
+
 
     return (
         <>
+            <ToastContainer autoClose={3000} />
             <div className="row p-5 g-0 mt-0">
                 <div className="sair">
                     <button className="btn-sair" onClick={Logout}>Logoff</button>
                 </div>
-                <div className="card col-lg-3 col-md-4">
+                <div className="card col-lg-3 col-md-12">
                     <h1>Meus Gastos</h1>
                     <label>Descrição: </label>
-                    <textarea value={descricao} onChange={handleDescricaoChange}></textarea>
+                    <input value={descricao} onChange={handleDescricaoChange}></input>
 
                     <label>Selecione: </label>
                     <select value={moeda} onChange={(e) => setMoeda(e.target.value)}>
@@ -152,7 +164,7 @@ export default function Formulario() {
                     </select>
 
                     <label>Valor: </label>
-                    <input type="number" value={valor} onChange={(e) => setValor(e.target.value)} />
+                    <input type="number" value={valor} onChange={handleChange} maxLength={7} />
 
                     {Object.keys(editDescricao).length > 0 ? (
                         <button className="btn-salvar" onClick={Save}>Atualizar</button>
@@ -163,7 +175,7 @@ export default function Formulario() {
 
                 </div>
 
-                <div className="lista col-lg-8 col-md-8">
+                <div className="lista col-lg-8 col-md-12">
                     {listaDescr.length === 0 ? (
                         <p>Lista está vazia</p>
                     ) : (

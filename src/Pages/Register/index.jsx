@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-import {auth} from '../../firebaseConnection'
+import { auth } from '../../firebaseConnection'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
+
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export default function Register() {
     const [email, setEmail] = useState('')
@@ -16,18 +19,20 @@ export default function Register() {
 
         // verificação para nao ter erro no login
         if (email !== '' && senha !== '') {
-            await createUserWithEmailAndPassword(auth,email,senha)
-            .then(()=>{
-                navigate('/Formulario',{replace:true})
-            })
+            await createUserWithEmailAndPassword(auth, email, senha)
+                .then(() => {
+                    navigate('/Formulario', { replace: true })
+                })
         } else {
-            alert('Preencha os campos')
+            toast.warning('Preencha os campos')
         }
 
 
     }
     return (
         <>
+            <ToastContainer autoClose={3000} />
+
             <div className="container">
                 <h1>Cadastre-se</h1>
                 <span>Vamos criar sua conta!</span>

@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import './styles.css'
 
-import {auth} from '../../firebaseConnection'
+import { auth } from '../../firebaseConnection'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 
 import { useNavigate } from 'react-router-dom'
+
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -18,22 +20,24 @@ export default function Login() {
 
         // verificação para nao ter erro no login
         if (email !== '' && senha !== '') {
-            await signInWithEmailAndPassword(auth,email,senha)
-            .then(()=>{
-                // fez o login vai navegar direto para o formulario
-                navigate('/Formulario',{replace:true})
-            })
-            .catch(()=>{
-                alert('Erro ao fazer login')
-            })
+            await signInWithEmailAndPassword(auth, email, senha)
+                .then(() => {
+                    // fez o login vai navegar direto para o formulario
+                    navigate('/Formulario', { replace: true })
+                })
+                .catch(() => {
+                    toast.error('Erro ao fazer login')
+                })
         } else {
-            alert('Preencha os campos')
+            toast.warning('Preencha os campos')
         }
 
-        
+
     }
     return (
         <>
+            <ToastContainer autoClose={3000} />
+
             <div className="container">
                 <h1>Login</h1>
                 <span>Gerêncie seus gastos de forma facil !</span>

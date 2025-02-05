@@ -89,14 +89,11 @@ label{
     margin-bottom: 5px;
 }
 input{
-    padding: 5px;
-    margin-bottom: 20px;
-}
-textarea{
     font-size: 15px;
     padding: 5px;
     margin-bottom: 15px;
 }
+
 
 select{
     padding: 5px;
@@ -111,7 +108,7 @@ select{
     margin-top: 10px;
 }
 
-@media (max-width:767px) {
+@media (max-width:992px) {
     .lista {
         margin-left:0px;
     }
@@ -132,6 +129,6 @@ select{
         justify-content: flex-end; 
         align-items: flex-end;  
         margin-top: 2%;
-        margin-left: -10%; 
+        margin-left: 20px; 
     }
 }
