@@ -107,7 +107,7 @@ export default function Formulario() {
 
     function handleDescricaoChange(e) {
         const inputDescricao = e.target.value
-        if (inputDescricao.length <= 20) {
+        if (inputDescricao.length <= 15) {
             setDescricao(inputDescricao)
         }
     }
