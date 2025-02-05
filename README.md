@@ -8,17 +8,11 @@ Este é um projeto desenvolvido em ReactJS para controle de gastos pessoais, com
  - Interface interativa: A aplicação tem uma interface limpa e intuitiva, desenvolvida com ReactJS, proporcionando uma boa experiência ao usuário.
 
 ### Tecnologias Utilizadas
-<<<<<<< HEAD
- - ReactJS: Para construção da interface e gestão do estado da aplicação.
- - Firebase Authentication: Para autenticação de usuários de forma segura.
- - Firebase Firestore: Para armazenar e gerenciar os dados de gastos de cada usuário.
- - React Router: Para navegação entre as páginas da aplicação.
-=======
+
  -  ReactJS: Para construção da interface e gestão do estado da aplicação.
  -  Firebase Authentication: Para autenticação de usuários de forma segura.
  -  Firebase Firestore: Para armazenar e gerenciar os dados de gastos de cada usuário.
  -  React Router: Para navegação entre as páginas da aplicação.
->>>>>>> a4b44d91f7a512945b538995805fcb6f74e4b2ba
 
 ## Contribuições
 Sinta-se à vontade para contribuir com melhorias e sugestões! Caso encontre algum bug ou tenha algum feedback, abra uma issue ou faça um pull request.
