@@ -112,13 +112,6 @@ export default function Formulario() {
         }
     }
 
-    const handleChange = (e) => {
-        const inputValue = e.target.value;
-        if (/^\d{0,7}$/.test(inputValue)) {
-            setValor(inputValue);
-        }
-    }
-
 
     async function AtualizarDescr() {
         const docRef = doc(db, 'gastos', editDescricao?.id)
@@ -164,7 +157,7 @@ export default function Formulario() {
                     </select>
 
                     <label>Valor: </label>
-                    <input type="number" value={valor} onChange={handleChange} maxLength={7} />
+                    <input type="number" value={valor} onChange={(e)=>setValor(e.target.value)} />
 
                     {Object.keys(editDescricao).length > 0 ? (
                         <button className="btn-salvar" onClick={Save}>Atualizar</button>
